@@ -1,11 +1,10 @@
-#include <GL/glew.h>
+#include <glad/glad.h>
 #include <iostream>
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include "shader/tigl.h"
 using tigl::Vertex;
 
-#pragma comment(lib, "glew32s.lib")
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
 
@@ -86,7 +85,6 @@ void check_keyboard_input()
     }
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        std::cout << "Moving forward" << pos.z << '\n';
         //Move forward
         pos += delta_time * cameraFront;
     }

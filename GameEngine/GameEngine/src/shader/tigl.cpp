@@ -116,7 +116,7 @@ namespace tigl
 	// Initializes shader used
 	void init()
 	{
-		glewInit();
+		gladLoadGL();
 		shader.reset(new ShaderImpl());
 
 		glEnableVertexAttribArray(0);
