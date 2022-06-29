@@ -2,6 +2,9 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
+
+#include "EntityManager.h"
+#include "Player.h"
 #include "shader/tigl.h"
 using tigl::Vertex;
 
@@ -9,6 +12,7 @@ using tigl::Vertex;
 #pragma comment(lib, "glfw3.lib")
 
 GLFWwindow* window;
+EntityManager manager;
 
 bool is_wireframed = false;
 float input_angle = 0.0f;
@@ -75,6 +79,8 @@ void init()
         });
     glEnable(GL_DEPTH_TEST);
     tigl::shader->enableColor(true);
+
+    manager.addEntity<Player>("Sem");
 }
 
 void check_keyboard_input()
