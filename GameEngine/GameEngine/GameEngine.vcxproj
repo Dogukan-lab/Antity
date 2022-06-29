@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ECS\component\Transform.cpp" />
     <ClCompile Include="src\ECS\entity\Entity.cpp" />
     <ClCompile Include="src\ECS\entity\Player.cpp" />
     <ClCompile Include="src\glad.c" />

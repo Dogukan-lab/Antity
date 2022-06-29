@@ -135,6 +135,8 @@ void update()
 
     angle += delta_time * 100;
 
+    manager.update();
+
     check_keyboard_input();
 }
 

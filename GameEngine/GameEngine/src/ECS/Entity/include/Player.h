@@ -11,10 +11,7 @@ public:
 
 	~Player() override;
 
-	inline void update() override
-	{
-		//Mesh naar renderer
-	}
+	void update() override;
 
 private:
 	std::string name;
