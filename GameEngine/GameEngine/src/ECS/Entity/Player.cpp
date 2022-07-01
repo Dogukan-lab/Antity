@@ -5,7 +5,11 @@
 #include "Camera.h"
 
 using tigl::Vertex;
-
+/**
+* TODO: Add movement to player
+* Do this with a singleton movement handler that you can get the callbacks from
+* MAYBE: Scene singleton to get the glfw window for closing the apk.
+*/
 Player::Player()
 {
 	this->addComponent<Mesh>();
