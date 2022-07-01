@@ -102,4 +102,12 @@ public:
 			entity->update();
 		}
 	}
+
+	inline void draw()
+	{
+		for (const auto entity : this->entities)
+		{
+			entity->draw();
+		}
+	}
 };
