@@ -11,8 +11,6 @@ public:
 	Player();
 	~Player() override;
 
-	void setModel(glm::vec3 pos, float scale, const glm::vec3& rotation);
-
 	void update() override;
 	void draw() override;
 

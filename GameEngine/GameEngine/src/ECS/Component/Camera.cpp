@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "tigl.h"
+#include "glm/gtc/matrix_transform.hpp"
 
 Camera::Camera()
 {
@@ -22,11 +22,20 @@ Camera::Camera(const float& newFov, const float& newNear, const float& newFar)
 	this->zFar = newFar;
 }
 
-
 glm::mat4 Camera::getProjectionMatrix(float aspectRatio)
 {
 	return glm::perspective(glm::radians(this->fov),
 		aspectRatio, this->zNear, this->zFar);
+}
+
+glm::mat4 Camera::getLookAt(glm::vec3& position, glm::vec3& rotation)
+{
+	glm::mat4 ret = glm::mat4(1.0f);
+	ret = glm::rotate(ret, rotation.x, glm::vec3(1, 0, 0));
+	ret = glm::rotate(ret, rotation.y, glm::vec3(0, 1, 0));
+	ret = glm::translate(ret, position);
+
+	return ret;
 }
 
 void Camera::init()

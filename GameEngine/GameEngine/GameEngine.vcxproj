@@ -155,6 +155,8 @@
     <ClCompile Include="src\ECS\component\Transform.cpp" />
     <ClCompile Include="src\ECS\entity\Entity.cpp" />
     <ClCompile Include="src\ECS\entity\Player.cpp" />
+    <ClCompile Include="src\ECS\entity\WorldObject.cpp" />
+    <ClCompile Include="src\ECS\system\Renderer.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\shader\tigl.cpp" />
@@ -167,6 +169,8 @@
     <ClInclude Include="src\ECS\EntityManager.h" />
     <ClInclude Include="src\ECS\entity\include\Entity.h" />
     <ClInclude Include="src\ECS\entity\include\Player.h" />
+    <ClInclude Include="src\ECS\entity\include\WorldObject.h" />
+    <ClInclude Include="src\ECS\system\Renderer.h" />
     <ClInclude Include="src\ECS\util.h" />
     <ClInclude Include="src\shader\tigl.h" />
   </ItemGroup>

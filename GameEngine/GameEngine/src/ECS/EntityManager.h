@@ -95,7 +95,7 @@ public:
 		return nullptr;
 	}
 
-	inline void update() const
+	inline void update()
 	{
 		for(const auto& entity : this->entities)
 		{

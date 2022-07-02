@@ -27,12 +27,12 @@ glm::vec3& Transform::getPosition()
 	return this->position;
 }
 
-glm::vec3 Transform::getRotation() 
+glm::vec3& Transform::getRotation() 
 {
 	return this->rotation;
 }
 
-glm::vec3 Transform::getScale() 
+glm::vec3& Transform::getScale() 
 {
 	return this->scale;
 }

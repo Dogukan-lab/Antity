@@ -13,32 +13,26 @@ using tigl::Vertex;
 Player::Player()
 {
 	this->addComponent<Mesh>();
-    this->addComponent<Transform>(glm::vec3{10, 10, 0}, glm::vec3{0, 0, -1});
-	this->addComponent<Camera>(120.0f);
+    this->addComponent<Transform>();
+	this->addComponent<Camera>();
 }
 
 Player::~Player()
 {
 }
 
-void Player::setModel(glm::vec3 pos, float scale, const glm::vec3& rotation)
-{
-    glm::mat4 model(1.0f);
-    model = glm::translate(model, pos);
-    model = glm::rotate(model, glm::radians(rotation.x), glm::vec3(1, 0, 0));
-    model = glm::rotate(model, glm::radians(rotation.y), glm::vec3(0, 1, 0));
-    model = glm::rotate(model, glm::radians(rotation.z), glm::vec3(0, 0, 1));
-    model = glm::scale(model, glm::vec3(scale * 0.5f, scale * 0.5f, scale * 0.5f));
-    tigl::shader->setModelMatrix(model);
-}
 
 void Player::update()
 {
 	auto& transform = this->getComponent<Transform>();
+	transform.getPosition().z += 1 * 0.1;
 }
 
 void Player::draw()
 {
+	glClearColor(0.3f, 0.4f, 0.6f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
 
@@ -49,32 +43,10 @@ void Player::draw()
 		(float)(viewport[2] / viewport[3])
 	));
 
-	tigl::shader->setViewMatrix(glm::lookAt(
-		transform.getPosition(),
-		transform.getRotation(),
-		glm::vec3(0, 1, 0)));
-
+	tigl::shader->setViewMatrix(camera.getLookAt(transform.getPosition(), transform.getRotation()));
+        
     tigl::shader->setModelMatrix(glm::mat4(1.0f));
 
     tigl::shader->enableColor(true);
-
-
-    glEnable(GL_DEPTH_TEST);
-
-    tigl::begin(GL_TRIANGLES);
-    tigl::addVertex(tigl::Vertex::PC(glm::vec3(-2, -1, -4), glm::vec4(1, 0, 0, 1)));
-    tigl::addVertex(tigl::Vertex::PC(glm::vec3(2, -1, -4), glm::vec4(0, 1, 0, 1)));
-    tigl::addVertex(tigl::Vertex::PC(glm::vec3(0, 1, -4), glm::vec4(0, 0, 1, 1)));
-
-
-    tigl::addVertex(tigl::Vertex::PC(glm::vec3(-10, -1, -10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(tigl::Vertex::PC(glm::vec3(-10, -1, 10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(tigl::Vertex::PC(glm::vec3(10, -1, 10), glm::vec4(1, 1, 1, 1)));
-
-    tigl::addVertex(tigl::Vertex::PC(glm::vec3(-10, -1, -10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(tigl::Vertex::PC(glm::vec3(10, -1, -10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(tigl::Vertex::PC(glm::vec3(10, -1, 10), glm::vec4(1, 1, 1, 1)));
-
-    tigl::end();
 }
 
