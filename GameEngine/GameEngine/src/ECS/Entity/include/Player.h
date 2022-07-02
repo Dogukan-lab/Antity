@@ -11,6 +11,9 @@ public:
 	Player();
 	~Player() override;
 
+	void checkInput(float deltaTime);
+	void move(float angle, float fac);
+
 	void update() override;
 	void draw() override;
 

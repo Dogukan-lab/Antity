@@ -13,8 +13,6 @@ WorldObject::WorldObject()
 
 void WorldObject::update()
 {
-	//Does nothing
-	this->getComponent<Transform>().toString();
 }
 
 void WorldObject::draw()

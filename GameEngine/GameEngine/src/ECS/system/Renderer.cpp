@@ -23,6 +23,7 @@ void Renderer::draw()
 	int viewport[4];
 	glGetIntegerv(GL_VIEWPORT, viewport);
 
+
     glm::mat4 projection = glm::perspective(glm::radians(75.0f), viewport[2] / (float)viewport[3], 0.01f, 50.0f);
 
     tigl::shader->setProjectionMatrix(projection);
@@ -37,6 +38,8 @@ void Renderer::draw()
 	));
 
 	tigl::shader->setModelMatrix(glm::mat4(1.0f));
+
+	//Render alle andere entities
 
 	/*set_model(glm::vec3(3, -1, 1), 1.0f, glm::vec3(0,0,0));
 	render_cube();*/

@@ -172,6 +172,8 @@
     <ClInclude Include="src\ECS\entity\include\WorldObject.h" />
     <ClInclude Include="src\ECS\system\Renderer.h" />
     <ClInclude Include="src\ECS\util.h" />
+    <ClInclude Include="src\handler\Application.h" />
+    <ClInclude Include="src\handler\InputHandler.h" />
     <ClInclude Include="src\shader\tigl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

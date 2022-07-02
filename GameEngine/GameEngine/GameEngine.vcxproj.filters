@@ -77,5 +77,11 @@
     <ClInclude Include="src\ECS\entity\include\WorldObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\handler\Application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\handler\InputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
