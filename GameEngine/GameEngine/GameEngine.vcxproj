@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\ECS\;$(ProjectDir)src\ECS\entity\;$(ProjectDir)src\ECS\component\;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\ECS\Entity\include;$(ProjectDir)src\ECS\System\include;$(ProjectDir)src\ECS\Component\include;$(ProjectDir)src\ECS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\ECS\;$(ProjectDir)src\ECS\entity\;$(ProjectDir)src\ECS\component\;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\shader;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\ECS\Entity\include;$(ProjectDir)src\ECS\System\include;$(ProjectDir)src\ECS\Component\include;$(ProjectDir)src\ECS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,7 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\ECS\;$(ProjectDir)src\ECS\entity\;$(ProjectDir)src\ECS\component\;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\ECS\Entity\include;$(ProjectDir)src\ECS\System\include;$(ProjectDir)src\ECS\Component\include;$(ProjectDir)src\ECS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\ECS\;$(ProjectDir)src\ECS\entity\;$(ProjectDir)src\ECS\component\;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\shader;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\ECS\Entity\include;$(ProjectDir)src\ECS\System\include;$(ProjectDir)src\ECS\Component\include;$(ProjectDir)src\ECS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,7 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\ECS\;$(ProjectDir)src\ECS\entity\;$(ProjectDir)src\ECS\component\;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\ECS\Entity\include;$(ProjectDir)src\ECS\System\include;$(ProjectDir)src\ECS\Component\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\ECS\;$(ProjectDir)src\ECS\entity\;$(ProjectDir)src\ECS\component\;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\shader;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\ECS\Entity\include;$(ProjectDir)src\ECS\System\include;$(ProjectDir)src\ECS\Component\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,7 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\ECS\;$(ProjectDir)src\ECS\entity\;$(ProjectDir)src\ECS\component\;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\ECS\Entity\include;$(ProjectDir)src\ECS\System\include;$(ProjectDir)src\ECS\Component\include;$(ProjectDir)src\ECS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\ECS\;$(ProjectDir)src\ECS\entity\;$(ProjectDir)src\ECS\component\;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\shader;$(SolutionDir)Dependencies\GLAD\include;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\glm;$(ProjectDir)src\ECS\Entity\include;$(ProjectDir)src\ECS\System\include;$(ProjectDir)src\ECS\Component\include;$(ProjectDir)src\ECS;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,20 +151,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ECS\component\Camera.cpp" />
+    <ClCompile Include="src\ECS\component\Transform.cpp" />
     <ClCompile Include="src\ECS\entity\Entity.cpp" />
     <ClCompile Include="src\ECS\entity\Player.cpp" />
+    <ClCompile Include="src\ECS\entity\WorldObject.cpp" />
+    <ClCompile Include="src\ECS\system\Renderer.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\shader\tigl.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ECS\component\include\Camera.h" />
     <ClInclude Include="src\ECS\component\include\Component.h" />
     <ClInclude Include="src\ECS\component\include\Mesh.h" />
     <ClInclude Include="src\ECS\component\include\Transform.h" />
     <ClInclude Include="src\ECS\EntityManager.h" />
     <ClInclude Include="src\ECS\entity\include\Entity.h" />
     <ClInclude Include="src\ECS\entity\include\Player.h" />
+    <ClInclude Include="src\ECS\entity\include\WorldObject.h" />
+    <ClInclude Include="src\ECS\system\Renderer.h" />
     <ClInclude Include="src\ECS\util.h" />
+    <ClInclude Include="src\handler\Application.h" />
+    <ClInclude Include="src\handler\InputHandler.h" />
     <ClInclude Include="src\shader\tigl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

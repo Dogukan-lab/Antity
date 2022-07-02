@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <bitset>
+#include <memory>
 
 /**
  * @brief Utilities for getting ID's and certain constexprs

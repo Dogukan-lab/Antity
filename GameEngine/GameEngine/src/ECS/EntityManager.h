@@ -95,11 +95,19 @@ public:
 		return nullptr;
 	}
 
-	void update() const
+	inline void update()
 	{
 		for(const auto& entity : this->entities)
 		{
 			entity->update();
+		}
+	}
+
+	inline void draw()
+	{
+		for (const auto entity : this->entities)
+		{
+			entity->draw();
 		}
 	}
 };

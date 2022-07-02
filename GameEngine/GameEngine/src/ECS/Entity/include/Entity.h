@@ -1,15 +1,16 @@
 #pragma once
-
-#include "Component.h"
 #include "util.h"
+#include "Component.h"
+
 
 /**
  * @class Base class for every entity within the structure
+ * Generic functions to add and remove @components from the entity
  */
 class Entity
 {
 public:
-	util::ComponentList componentList{};
+	util::ComponentList components{};
 	util::ComponentBitSet componentBitSet;
 
 	Entity() = default;
@@ -23,14 +24,13 @@ public:
 	template <typename T, typename... TArgs>
 	inline std::shared_ptr<T> addComponent(TArgs&&... args)
 	{
-
 		auto ptr = std::make_shared<T>(std::forward<TArgs>(args)...);
 
 		/*std::unique_ptr<Component> uPtr{ component };
 		this->components.push_back(std::move(uPtr));*/
 
 		this->componentBitSet[util::getComponentTypeID<T>()] = true;
-		this->componentList[util::getComponentTypeID<T>()] = ptr;
+		this->components[util::getComponentTypeID<T>()] = ptr;
 
 		ptr->init();
 
@@ -40,11 +40,11 @@ public:
 	template <typename T>
 	inline T& getComponent()
 	{
-		auto ptr(componentList[util::getComponentTypeID<T>()]);
-		return *static_cast<T*>(ptr);
+		//Transform
+		auto ptr = this->components[util::getComponentTypeID<T>()];
+		return static_cast<T&>(*ptr.get());
 	}
 
 private:
 	size_t entityID;
-
 };
