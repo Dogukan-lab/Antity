@@ -8,6 +8,7 @@
 #include "handler/Application.h"
 #include "handler/InputHandler.h"
 #include "WorldObject.h"
+#include "WorldPlane.h"
 #include "ObjectLoader.h"
 
 #pragma comment(lib, "opengl32.lib")
@@ -101,7 +102,8 @@ void init()
 
 
     manager.addEntity<Player>();
-    manager.addEntity<WorldObject>();
+    manager.addEntity<WorldPlane>();
+    manager.addEntity<WorldObject>("..\\GameEngine\\resources\\suzanne.obj");
 }
 
 

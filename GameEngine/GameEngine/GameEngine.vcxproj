@@ -158,6 +158,7 @@
     <ClCompile Include="src\ECS\entity\Entity.cpp" />
     <ClCompile Include="src\ECS\entity\Player.cpp" />
     <ClCompile Include="src\ECS\entity\WorldObject.cpp" />
+    <ClCompile Include="src\ECS\entity\WorldPlane.cpp" />
     <ClCompile Include="src\ECS\system\ObjectLoader.cpp" />
     <ClCompile Include="src\ECS\system\Renderer.cpp" />
     <ClCompile Include="src\glad.c" />
@@ -174,6 +175,7 @@
     <ClInclude Include="src\ECS\entity\include\Entity.h" />
     <ClInclude Include="src\ECS\entity\include\Player.h" />
     <ClInclude Include="src\ECS\entity\include\WorldObject.h" />
+    <ClInclude Include="src\ECS\entity\include\WorldPlane.h" />
     <ClInclude Include="src\ECS\system\include\ObjectLoader.h" />
     <ClInclude Include="src\ECS\system\include\Renderer.h" />
     <ClInclude Include="src\ECS\util.h" />

@@ -5,7 +5,7 @@
 class WorldObject : public Entity
 {
 public:
-	WorldObject();
+	WorldObject() = default;
 	WorldObject(const std::string& fileName);
 	~WorldObject() = default;
 

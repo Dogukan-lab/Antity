@@ -4,14 +4,10 @@
 #include "Mesh.h"
 #include "ObjectLoader.h"
 
-WorldObject::WorldObject()
-{
-	this->addComponent<Transform>();
-	this->addComponent<Mesh>(ObjectLoader::getModel("..\\GameEngine\\resources\\plane.obj"));
-}
-
 WorldObject::WorldObject(const std::string& fileName)
 {
+    this->addComponent<Transform>(glm::vec3{10, 2, 3}, glm::vec3{0, 3, 1});
+    this->addComponent<Mesh>(ObjectLoader::getModel(fileName));
 }
 
 void WorldObject::update()
