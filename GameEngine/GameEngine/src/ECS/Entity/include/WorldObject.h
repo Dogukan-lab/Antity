@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "glm/glm.hpp"
 
 class WorldObject : public Entity
 {

@@ -32,7 +32,7 @@ public:
 	glm::vec3& getScale();
 
 private:
-	glm::vec3 position{};
-	glm::vec3 rotation{};
+	glm::vec3 position;
+	glm::vec3 rotation;
 	glm::vec3 scale {.5f, .5f, .5f};
 }; 

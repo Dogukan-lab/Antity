@@ -15,6 +15,8 @@ void WorldPlane::draw()
 {
     glEnable(GL_DEPTH_TEST);
 
+    tigl::shader->enableColor(true);
+
     tigl::begin(GL_TRIANGLES);
 
     tigl::addVertex(tigl::Vertex::PC(glm::vec3(-2, -1, -4), glm::vec4(1, 0, 0, 1)));

@@ -4,6 +4,7 @@ Transform::Transform()
 {
 	this->position = glm::zero <glm::vec3>();
 	this->rotation = glm::zero <glm::vec3>();
+	this->scale = glm::vec3(.5f, .5f, .5f);
 }
 
 Transform::Transform(glm::vec3 newPosition, glm::vec3 newRotation) : position(newPosition),
@@ -18,9 +19,8 @@ position(newPosition), rotation(newRotation), scale(newScale)
 
 void Transform::init()
 {
-	toString();
+	/*toString();*/
 }
-
 
 glm::vec3& Transform::getPosition() 
 {

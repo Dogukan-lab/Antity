@@ -8,12 +8,6 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
-using tigl::Vertex;
-/**
-* TODO: Add movement to player
-* Do this with a singleton movement handler that you can get the callbacks from
-* MAYBE: Scene singleton to get the glfw window for closing the apk.
-*/
 Player::Player()
 {
 	this->addComponent<Transform>();
@@ -90,9 +84,10 @@ void Player::draw()
 		(float)(viewport[2] / viewport[3])
 	));
 
+	tigl::shader->enableColor(true);
+
 	tigl::shader->setViewMatrix(camera.getLookAt(transform.getPosition(), transform.getRotation()));
     tigl::shader->setModelMatrix(glm::mat4(1.0f));
 
-    tigl::shader->enableColor(true);
 }
 
