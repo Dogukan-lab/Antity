@@ -84,8 +84,21 @@ void init()
         });
     
     glEnable(GL_DEPTH_TEST);
-    tigl::shader->enableColor(true);
 
+    tigl::shader->use();
+
+    tigl::shader->enableColor(true);
+    tigl::shader->enableTexture(false);
+    tigl::shader->enableLighting(true);
+
+    tigl::shader->setLightCount(2);
+    tigl::shader->setShinyness(32.0f);
+
+    tigl::shader->setLightDirectional(0, false);
+    tigl::shader->setLightAmbient(0, glm::vec3(0.5f, 0.5f, 0.5f));
+    tigl::shader->setLightPosition(0, glm::vec3(0, -100, 0));
+    tigl::shader->setLightDiffuse(0, glm::vec3(0.8f, 0.8f, 0.8f));
+    tigl::shader->setLightSpecular(0, glm::vec3(0, 0, 0));
 
 
     manager.addEntity<Player>();
