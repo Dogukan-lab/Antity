@@ -99,4 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="resources\models\box.obj" />
+    <Object Include="resources\models\plane.obj" />
+    <Object Include="resources\models\suzanne.obj" />
+  </ItemGroup>
 </Project>

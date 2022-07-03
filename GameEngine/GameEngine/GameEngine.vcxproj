@@ -181,6 +181,11 @@
     <ClInclude Include="src\obj-loader\include\Model.h" />
     <ClInclude Include="src\shader\tigl.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="resources\models\box.obj" />
+    <Object Include="resources\models\plane.obj" />
+    <Object Include="resources\models\suzanne.obj" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
