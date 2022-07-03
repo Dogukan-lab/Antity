@@ -1,37 +1,39 @@
 #include "WorldObject.h"
 #include "tigl.h"
 #include "Transform.h"
-#include "glm/gtc/matrix_transform.hpp"
+#include "Mesh.h"
+#include "ObjectLoader.h"
 
-
-using tigl::Vertex;
-
-WorldObject::WorldObject()
+WorldObject::WorldObject(const std::string& fileName)
 {
-	this->addComponent<Transform>();
+    this->addComponent<Transform>();
+    this->addComponent<Mesh>(ObjectLoader::getModel(fileName));
 }
 
 void WorldObject::update()
 {
+    auto& transform = this->getComponent<Transform>();
+
+    if (transform.getRotation().y <= 10)
+    {
+        transform.getRotation().y += (1 * 0.01f);
+    }
 }
 
 void WorldObject::draw()
 {
-	glEnable(GL_DEPTH_TEST);
+	auto& transform = this->getComponent<Transform>();
+    glm::mat4 modelMatrix = glm::mat4(1.0f);
 
-	tigl::begin(GL_TRIANGLES);
-	tigl::addVertex(Vertex::PC(glm::vec3(-2, -1, -4), glm::vec4(1, 0, 0, 1)));
-	tigl::addVertex(Vertex::PC(glm::vec3(2, -1, -4), glm::vec4(0, 1, 0, 1)));
-	tigl::addVertex(Vertex::PC(glm::vec3(0, 1, -4), glm::vec4(0, 0, 1, 1)));
+    modelMatrix = glm::scale(modelMatrix, transform.getScale());
+    modelMatrix = glm::translate(modelMatrix, transform.getPosition());
 
+    auto rotation = transform.getRotation();
+    modelMatrix = glm::rotate(modelMatrix, rotation.x, glm::vec3(1, 0, 0));
+    modelMatrix = glm::rotate(modelMatrix, rotation.y, glm::vec3(0, 1, 0));
+    modelMatrix = glm::rotate(modelMatrix, rotation.z, glm::vec3(0, 0, 1));
 
-	tigl::addVertex(Vertex::PC(glm::vec3(-10, -1, -10), glm::vec4(1, 1, 1, 1)));
-	tigl::addVertex(Vertex::PC(glm::vec3(-10, -1, 10), glm::vec4(1, 1, 1, 1)));
-	tigl::addVertex(Vertex::PC(glm::vec3(10, -1, 10), glm::vec4(1, 1, 1, 1)));
+    tigl::shader->setModelMatrix(modelMatrix);
 
-	tigl::addVertex(Vertex::PC(glm::vec3(-10, -1, -10), glm::vec4(1, 1, 1, 1)));
-	tigl::addVertex(Vertex::PC(glm::vec3(10, -1, -10), glm::vec4(1, 1, 1, 1)));
-	tigl::addVertex(Vertex::PC(glm::vec3(10, -1, 10), glm::vec4(1, 1, 1, 1)));
-
-	tigl::end();
+	tigl::drawVertices(GL_TRIANGLES, this->getComponent<Mesh>().getModel()->getVertices());
 }

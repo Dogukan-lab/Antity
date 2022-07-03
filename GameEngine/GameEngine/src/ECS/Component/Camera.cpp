@@ -3,7 +3,7 @@
 
 Camera::Camera()
 {
-	this->fov = 90.0f;
+	this->fov = 75.0f;
 	this->zNear = 0.1f;
 	this->zFar = 100.0f;
 }

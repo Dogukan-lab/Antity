@@ -8,6 +8,9 @@
 #include "handler/Application.h"
 #include "handler/InputHandler.h"
 #include "WorldObject.h"
+#include "WorldPlane.h"
+#include "ObjectLoader.h"
+#include <component/include/Transform.h>
 
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
@@ -84,15 +87,37 @@ void init()
         });
     
     glEnable(GL_DEPTH_TEST);
+
     tigl::shader->enableColor(true);
+    tigl::shader->enableTexture(false); // Dit op true zorgt ervoor dat alles zwart wordt ?????
+    tigl::shader->enableLighting(true);
 
+    tigl::shader->setLightCount(2);
+    tigl::shader->setShinyness(32.0f);
 
+    tigl::shader->setLightDirectional(0, false);
+    tigl::shader->setLightAmbient(0, glm::vec3(0.5f, 0.5f, 0.5f));
+    tigl::shader->setLightPosition(0, glm::vec3(30, 10, 10));
+    tigl::shader->setLightDiffuse(0, glm::vec3(0.8f, 0.8f, 0.8f));
+    tigl::shader->setLightSpecular(0, glm::vec3(0, 0, 0));
+
+    tigl::shader->setLightDirectional(1, false);
+    tigl::shader->setLightAmbient(1, glm::vec3(0.1f, 0.1f, 0.15f));
+    tigl::shader->setLightDiffuse(1, glm::vec3(0.8f, 0.8f, 0.8f));
+    tigl::shader->setLightPosition(1, glm::vec3(2.0f, 0.0f, 2.0f));
 
     manager.addEntity<Player>();
-    manager.addEntity<WorldObject>();
+    manager.addEntity<WorldPlane>();
+    auto suzanne = manager.addEntity<WorldObject>("..\\GameEngine\\resources\\suzanne.obj");
+    suzanne->getComponent<Transform>().getPosition() = glm::vec3(-10, 0, -3);
+
+    auto box = manager.addEntity<WorldObject>("..\\GameEngine\\resources\\box.obj");
+    box->getComponent<Transform>().getPosition() = glm::vec3(10, 3, 0);
+
+    auto tower = manager.addEntity<WorldObject>("..\\GameEngine\\resources\\Tower.obj");
+    tower->getComponent<Transform>().getPosition() = glm::vec3(0, -2, -10);
+    tower->getComponent<Transform>().getScale() = { .1f, .1f, .1f };
 }
-
-
 
 void update()
 {
@@ -111,29 +136,12 @@ void draw()
 
     tigl::shader->setProjectionMatrix(projection);
     tigl::shader->setViewMatrix(glm::lookAt(
-        glm::vec3(0,0,1),
-        glm::vec3(0,0,0),
-        glm::vec3(0,1,0)
-       ));
-    tigl::shader->setModelMatrix(glm::mat4(1.0f));
+        glm::vec3(0, 0, 1),
+        glm::vec3(0, 0, 0),
+        glm::vec3(0, 1, 0)
+    ));
 
-    tigl::shader->enableColor(true);
+    tigl::drawVertices(GL_TRIANGLES,
+        ObjectLoader::getModel("..\\GameEngine\\resources\\plane.obj")->getVertices());
 
-    glEnable(GL_DEPTH_TEST);
-
-    tigl::begin(GL_TRIANGLES);
-    tigl::addVertex(Vertex::PC(glm::vec3(-2, -1, -4), glm::vec4(1, 0, 0, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(2, -1, -4), glm::vec4(0, 1, 0, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(0, 1, -4), glm::vec4(0, 0, 1, 1)));
-
-
-    tigl::addVertex(Vertex::PC(glm::vec3(-10, -1, -10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(-10, -1, 10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(10, -1, 10), glm::vec4(1, 1, 1, 1)));
-
-    tigl::addVertex(Vertex::PC(glm::vec3(-10, -1, -10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(10, -1, -10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(10, -1, 10), glm::vec4(1, 1, 1, 1)));
-
-    tigl::end();
 }

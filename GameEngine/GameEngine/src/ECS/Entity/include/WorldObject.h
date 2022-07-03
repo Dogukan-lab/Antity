@@ -1,11 +1,13 @@
 #pragma once
 
 #include "Entity.h"
+#include "glm/glm.hpp"
 
 class WorldObject : public Entity
 {
 public:
-	WorldObject();
+	WorldObject() = default;
+	WorldObject(const std::string& fileName);
 	~WorldObject() = default;
 
 
