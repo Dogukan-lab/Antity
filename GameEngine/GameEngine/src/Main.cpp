@@ -8,6 +8,7 @@
 #include "handler/Application.h"
 #include "handler/InputHandler.h"
 #include "WorldObject.h"
+#include "ObjectLoader.h"
 
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glfw3.lib")
@@ -85,13 +86,11 @@ void init()
     
     glEnable(GL_DEPTH_TEST);
 
-    tigl::shader->use();
-
     tigl::shader->enableColor(true);
     tigl::shader->enableTexture(false);
     tigl::shader->enableLighting(true);
 
-    tigl::shader->setLightCount(2);
+    tigl::shader->setLightCount(1);
     tigl::shader->setShinyness(32.0f);
 
     tigl::shader->setLightDirectional(0, false);
@@ -124,29 +123,12 @@ void draw()
 
     tigl::shader->setProjectionMatrix(projection);
     tigl::shader->setViewMatrix(glm::lookAt(
-        glm::vec3(0,0,1),
-        glm::vec3(0,0,0),
-        glm::vec3(0,1,0)
-       ));
-    tigl::shader->setModelMatrix(glm::mat4(1.0f));
+        glm::vec3(0, 0, 1),
+        glm::vec3(0, 0, 0),
+        glm::vec3(0, 1, 0)
+    ));
 
-    tigl::shader->enableColor(true);
+    tigl::drawVertices(GL_TRIANGLES,
+        ObjectLoader::getModel("..\\GameEngine\\resources\\plane.obj")->getVertices());
 
-    glEnable(GL_DEPTH_TEST);
-
-    tigl::begin(GL_TRIANGLES);
-    tigl::addVertex(Vertex::PC(glm::vec3(-2, -1, -4), glm::vec4(1, 0, 0, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(2, -1, -4), glm::vec4(0, 1, 0, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(0, 1, -4), glm::vec4(0, 0, 1, 1)));
-
-
-    tigl::addVertex(Vertex::PC(glm::vec3(-10, -1, -10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(-10, -1, 10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(10, -1, 10), glm::vec4(1, 1, 1, 1)));
-
-    tigl::addVertex(Vertex::PC(glm::vec3(-10, -1, -10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(10, -1, -10), glm::vec4(1, 1, 1, 1)));
-    tigl::addVertex(Vertex::PC(glm::vec3(10, -1, 10), glm::vec4(1, 1, 1, 1)));
-
-    tigl::end();
 }

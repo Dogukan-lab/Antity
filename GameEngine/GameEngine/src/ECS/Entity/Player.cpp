@@ -16,8 +16,7 @@ using tigl::Vertex;
 */
 Player::Player()
 {
-	this->addComponent<Mesh>();
-    this->addComponent<Transform>();
+	this->addComponent<Transform>();
 	this->addComponent<Camera>();
 
 	glfwSetInputMode(Application::getInstance()->getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
